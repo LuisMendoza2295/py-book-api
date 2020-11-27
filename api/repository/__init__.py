@@ -2,8 +2,11 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import scoped_session
+from dotenv import load_dotenv
+import os
 
-engine = create_engine('sqlite:///./books_db.sqlite?check_same_thread=False', echo=True)
+load_dotenv(verbose=True)
+engine = create_engine(os.getenv('DATABASE_URL'), echo=True)
 
 Base = declarative_base()
 
